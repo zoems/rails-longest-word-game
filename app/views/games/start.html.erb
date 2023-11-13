@@ -1,0 +1,21 @@
+<header class="d-flex align-items-center py-5 " style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp')">
+  <div class="container px-4 px-lg-5 text-center">
+    <h1 class="mb-1">Wordle</h1>
+    <h3 class="mb-5"><em>Find the longest word</em></h3>
+    <%= link_to "New Game", start_path, class: "btn btn-primary btn-xl" %>
+  </div>
+</header>
+<div class="align-items-center">
+<div>here are the letters: <%=@grid%> </div>
+
+<form action="/start" data-turbo="false">
+  <input type="text" name="guess">
+  <input type="submit" value="Ask!">
+  <%= hidden_field_tag :grid, @grid %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>
+
+<% if @check && @included %>
+  <p>Congrats you found a word</p>
+<% end %>
+</div>
